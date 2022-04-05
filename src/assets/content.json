@@ -1,0 +1,44 @@
+{
+  "products": {
+    "newsboy-cap": {
+      "heading": "Newsboy Cap",
+      "description": "A classic newsboy cap with a classic design.",
+      "price": "£20.00",
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8u2guZwxCcT14YyeB4gL29fTwCzWjvWi0Em3Nsf7NnFANyqqnVBkweOsmYSnDjoW9IIyN1yWiR4RYSvKIfKehbzLc0u7d1SIF6ullzThDKBXNaTTyenNs&usqp=CAE",
+      "blogLink": "blog/top-three-hats"
+    },
+    "socks": {
+      "heading": "Socks",
+      "description": "Awesome socks with a classic design.",
+      "price": "£10.00",
+      "image": "https://cdn.shopify.com/s/files/1/0004/3712/5184/products/gay-pride-socks-pride-socks-by-socksmith-gay-pride_grande.jpg?v=1601480160"
+    }
+  },
+  "blogs": {
+    "top-three-hats": {
+      "heading": "Top Three Hats",
+      "subHeading": "Created by Alex Bowers",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar purus vel felis malesuada porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras fermentum nisl dui, at sollicitudin augue posuere vitae. Sed in enim accumsan, volutpat massa eget, commodo nisl. Praesent nec risus ipsum. Donec vulputate elit vitae imperdiet consequat. Quisque odio urna, pellentesque sed risus at, vehicula volutpat nisl. In ultricies tristique finibus. Vivamus venenatis commodo neque quis cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus aliquam sapien, et gravida quam sodales consequat. Sed a turpis et tortor blandit malesuada. Mauris a vehicula leo, quis congue est.\r\nNulla ut risus malesuada urna imperdiet pellentesque. Maecenas vestibulum nisi ut pharetra accumsan. Mauris facilisis sapien mauris, at pulvinar erat rutrum non. Maecenas mattis justo eros, non egestas augue finibus eget. Proin enim tellus, cursus quis rhoncus ac, tristique non dolor. Etiam a magna id purus accumsan tristique. Nullam finibus accumsan velit, eu euismod orci posuere in. Vestibulum convallis nisi nec fringilla condimentum. Vivamus iaculis est ut luctus cursus. Vestibulum iaculis efficitur arcu, in faucibus magna maximus non. Aliquam consequat finibus elit, vitae pulvinar diam varius a.",
+      "content": [
+        {
+          "heading": "Newsboy Cap 1",
+          "productLink": "product/newsboy-cap",
+          "description": "A classic newsboy cap with a classic design.",
+          "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8u2guZwxCcT14YyeB4gL29fTwCzWjvWi0Em3Nsf7NnFANyqqnVBkweOsmYSnDjoW9IIyN1yWiR4RYSvKIfKehbzLc0u7d1SIF6ullzThDKBXNaTTyenNs&usqp=CAE"
+        },
+        {
+          "heading": "Newsboy Cap 2",
+          "productLink": "product/newsboy-cap",
+          "description": "A classic newsboy cap with a classic design.",
+          "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8u2guZwxCcT14YyeB4gL29fTwCzWjvWi0Em3Nsf7NnFANyqqnVBkweOsmYSnDjoW9IIyN1yWiR4RYSvKIfKehbzLc0u7d1SIF6ullzThDKBXNaTTyenNs&usqp=CAE"
+        },
+        {
+          "heading": "Newsboy Cap 3",
+          "productLink": "product/newsboy-cap",
+          "description": "A classic newsboy cap with a classic design.",
+          "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8u2guZwxCcT14YyeB4gL29fTwCzWjvWi0Em3Nsf7NnFANyqqnVBkweOsmYSnDjoW9IIyN1yWiR4RYSvKIfKehbzLc0u7d1SIF6ullzThDKBXNaTTyenNs&usqp=CAE"
+        }
+      ]
+    }
+  }
+}
