@@ -29,9 +29,10 @@ import { createPageTitle } from '@/composables/sanitise'
 
 const route = useRoute()
 const store = useContentStore()
+const storeParam: string = route.params.store.toString()
 
-const pages = computed(() => store.getPages(route.params.store))
-const title = computed(() => createPageTitle(route.params.store))
+const pages = computed(() => store.getPages(storeParam))
+const title = computed(() => createPageTitle(storeParam))
 </script>
 
 <style scoped>

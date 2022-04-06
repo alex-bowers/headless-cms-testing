@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
 
+import type { Store } from "@/types";
+
 export const useContentStore = defineStore({
   id: 'content',
-  state: () => ({
+  state: (): Store => ({
     pages: {
       clothes: {
         name: 'Clothes Store',
@@ -26,8 +28,8 @@ export const useContentStore = defineStore({
     }
   }),
   getters: {
-    getPages: (state) => {
-      return (slug) => state.pages[slug]
+    getPages: (state: Store) => {
+      return (slug: string) => state.pages[slug]
     },
   },
   actions: {}

@@ -31,7 +31,7 @@ import { fetchBlog } from '@/composables/fetchContent'
 
 const route = useRoute()
 
-const blog = computed(() => fetchBlog(route.params.slug))
+const blog = computed(() => fetchBlog(route.params.slug.toString()))
 </script>
 
 <style scoped></style>

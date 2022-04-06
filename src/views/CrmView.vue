@@ -22,7 +22,7 @@ import { createPageTitle } from '@/composables/sanitise'
 
 const route = useRoute()
 
-const title = computed(() => createPageTitle(route.params.crm))
+const title = computed(() => createPageTitle(route.params.crm.toString()))
 </script>
 
 <style scoped>

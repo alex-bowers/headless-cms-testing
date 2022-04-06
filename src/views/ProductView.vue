@@ -4,7 +4,7 @@
     <div v-if="product">
       <div>
         <img :src="product.image" alt="">
-        <h4>{{ product.title }}</h4>
+        <h4>{{ product.heading }}</h4>
         <p>{{ product.description }}</p>
         Price: {{ product.price }}
       </div>
@@ -23,9 +23,10 @@ import { fetchProduct } from '@/composables/fetchContent'
 import { createPageTitle } from '@/composables/sanitise'
 
 const route = useRoute()
+const slugParam: string = route.params.slug.toString()
 
-const product = computed(() => fetchProduct(route.params.slug))
-const title = computed(() => createPageTitle(route.params.slug))
+const product = computed(() => fetchProduct(slugParam))
+const title = computed(() => createPageTitle(slugParam))
 </script>
 
 <style scoped></style>
