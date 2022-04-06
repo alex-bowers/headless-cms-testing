@@ -22,17 +22,21 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useContentStore } from "@/stores/content"
 import { createPageTitle } from '@/composables/sanitise'
 
 const route = useRoute()
 const store = useContentStore()
-const storeParam: string = route.params.store.toString()
+const storeParam = ref(route.params.store.toString())
 
-const pages = computed(() => store.getPages(storeParam))
-const title = computed(() => createPageTitle(storeParam))
+const pages = computed(() => store.getPages(storeParam.value))
+const title = computed(() => createPageTitle(storeParam.value))
+
+watch(route, (newRoute) => {
+  storeParam.value = newRoute.params.store.toString()
+})
 </script>
 
 <style scoped>
