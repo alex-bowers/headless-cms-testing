@@ -3,10 +3,10 @@
     <h1>{{ title }} CMS</h1>
 
     <div>
-      <router-link :to="`/${route.params.crm}/clothes`">
+      <router-link :to="`/${route.params.cms}/clothes`">
         Clothes Store
       </router-link>
-      <router-link :to="`/${route.params.crm}/hat`">
+      <router-link :to="`/${route.params.cms}/hat`">
         Hat Store
       </router-link>
     </div>
@@ -22,7 +22,7 @@ import { createPageTitle } from '@/composables/sanitise'
 
 const route = useRoute()
 
-const title = computed(() => createPageTitle(route.params.crm.toString()))
+const title = computed(() => createPageTitle(route.params.cms.toString()))
 </script>
 
 <style scoped>

@@ -10,23 +10,23 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/:crm',
-      name: 'crm',
-      component: () => import('../views/CrmView.vue'),
+      path: '/:cms',
+      name: 'cms',
+      component: () => import('../views/CmsView.vue'),
       children: [
         {
           path: ':store',
-          name: 'crm.store',
+          name: 'cms.store',
           component: () => import('../views/StoreView.vue'),
         },
         {
           path: ':store/product/:slug',
-          name: 'crm.store.product',
+          name: 'cms.store.product',
           component: () => import('../views/ProductView.vue'),
         },
         {
           path: ':store/blog/:slug',
-          name: 'crm.store.blog',
+          name: 'cms.store.blog',
           component: () => import('../views/BlogView.vue'),
         }
       ]

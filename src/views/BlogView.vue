@@ -16,7 +16,7 @@
             <p>{{ paragraph.description }}</p>
             <a
               v-if="paragraph.productLink"
-              :href="`/${route.params.crm}/${route.params.store}/${paragraph.productLink}`"
+              :href="`/${route.params.cms}/${route.params.store}/${paragraph.productLink}`"
             >View Product</a>
         </div>
       </div>

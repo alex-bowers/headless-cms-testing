@@ -10,7 +10,7 @@
       </div>
       <a
         v-if="product.blogLink"
-        :href="`/${route.params.crm}/${route.params.store}/${product.blogLink}`"
+        :href="`/${route.params.cms}/${route.params.store}/${product.blogLink}`"
       >View Blog</a>
     </div>
   </div>
