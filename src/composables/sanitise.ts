@@ -1,3 +1,9 @@
+import type { Blog, Product } from '@/types'
+
+export function createBlog(data: any, cms: string): Blog {
+  return data
+}
+
 export function createPageTitle(routePath: string): string {
   const words = routePath.split("-")
   for (let i = 0; i < words.length; i++) {
@@ -7,7 +13,7 @@ export function createPageTitle(routePath: string): string {
   return words.join(" ")
 }
 
-export function createProduct(data: any, cms: string) {
+export function createProduct(data: any, cms: string): Product {
   const image: { [key: string]: any} = {
     storyblok: data.images[0]
   }

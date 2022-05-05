@@ -1,5 +1,5 @@
 import StoryblokClient from 'storyblok-js-client';
-import { createProduct } from '@/composables/sanitise'
+import { createBlog, createProduct } from '@/composables/sanitise'
 import cmsData from '@/assets/content.json'
 import type { Blog, Content, Product } from '@/types'
 
@@ -21,14 +21,26 @@ export function fetchProduct(slug: string, cms: string): Promise<Product> | Prod
     return dataFromCMS.products[slug]
 }
 
-export function fetchBlog(slug: string): Blog {
+export function fetchBlog(slug: string, cms: string): Promise<Blog> | Blog {
+    const services: { [key: string]: Promise<Product>} = {
+        storyblok: fetchStoryblokBlog(slug)
+    }
+
+    if (cms in services) {
+        return services[cms].then(data => createBlog(data, cms))
+    }
+
     return dataFromCMS.blogs[slug]
+}
+
+function fetchStoryblokBlog(slug: string) {
+    return Storyblok.get(`cdn/stories/blogs/${slug}`, {
+        version: 'draft',
+    }).then(({ data }) => data.story)
 }
 
 function fetchStoryblokProduct(slug: string) {
     return Storyblok.get(`cdn/stories/products/${slug}`, {
         version: 'draft',
-    }).then(({ data }) => {
-        return data.story.content;
-    })
+    }).then(({ data }) => data.story.content)
 }
