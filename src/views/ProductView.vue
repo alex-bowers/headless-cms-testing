@@ -1,32 +1,50 @@
 <template>
-  <div>
-    <h3>{{ title }}</h3>
     <div v-if="product">
-      <div>
-        <img :src="product.image" alt="">
-        <h4>{{ product.heading }}</h4>
-        <p>{{ product.description }}</p>
-        Price: {{ product.price }}
-      </div>
-      <a
-        v-if="product.blogLink"
-        :href="`/${route.params.cms}/${route.params.store}/${product.blogLink}`"
-      >View Blog</a>
+        <h3>{{ product.heading }}</h3>
+        <div>
+            <img :src="product.image.filename" :alt="product.image.alt">
+            <p>{{ product.description }}</p>
+            Price: {{ product.price }}
+        </div>
+        <a
+            v-if="product.blogLink"
+            :href="`/${route.params.cms}/${route.params.store}/${product.blogLink}`"
+        >View Blog</a>
     </div>
-  </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchProduct } from '@/composables/fetchContent'
-import { createPageTitle } from '@/composables/sanitise'
+import type { Product } from '@/types'
 
 const route = useRoute()
+const routeParam: string = route.params.cms.toString()
 const slugParam: string = route.params.slug.toString()
 
-const product = computed(() => fetchProduct(slugParam))
-const title = computed(() => createPageTitle(slugParam))
+let product = ref<Product>({
+    heading: '',
+    description: '',
+    price: '',
+    image: {
+        filename: '',
+        alt: ''
+    },
+    blogLink: ''
+})
+
+onMounted(() => {
+    const fetchedProduct = fetchProduct(slugParam, routeParam)
+
+    if (fetchedProduct instanceof Promise) {
+        fetchedProduct.then((result: Product) => {
+            product.value = result
+        })
+        } else {
+        product.value = fetchedProduct
+    }
+})
 </script>
 
 <style scoped></style>

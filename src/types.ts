@@ -15,8 +15,13 @@ export interface Product {
     heading: string,
     description: string,
     price: string,
-    image: string,
+    image: ProductImage,
     blogLink?: string | null,
+}
+
+export interface ProductImage {
+    filename: string,
+    alt: string
 }
 
 export interface Blog {
