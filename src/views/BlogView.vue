@@ -3,7 +3,7 @@
     <div>
         <h3>{{ blog.heading }}</h3>
 
-        <p>{{ blog.description }}</p>
+        <p v-html="convertMarkdownToHtml(blog.description)"></p>
     </div>
     <div>
         <h4>Content</h4>
@@ -40,6 +40,7 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchBlog } from '@/composables/fetchContent'
+import { convertMarkdownToHtml } from '@/composables/sanitise'
 import type { Blog } from '@/types'
 
 const route = useRoute()

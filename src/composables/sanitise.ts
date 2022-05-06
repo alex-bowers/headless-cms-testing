@@ -1,4 +1,9 @@
+import { marked } from 'marked'
 import type { Blog, Product } from '@/types'
+
+export function convertMarkdownToHtml(markdown: string): string {
+    return marked(markdown)
+}
 
 export function createBlog(data: any, cms: string): Blog {
     const author: { [key: string]: any} = {
