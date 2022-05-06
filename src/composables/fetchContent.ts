@@ -22,7 +22,7 @@ export function fetchProduct(slug: string, cms: string): Promise<Product> | Prod
 }
 
 export function fetchBlog(slug: string, cms: string): Promise<Blog> | Blog {
-    const services: { [key: string]: Promise<Product>} = {
+    const services: { [key: string]: Promise<Blog>} = {
         storyblok: fetchStoryblokBlog(slug)
     }
 
@@ -36,7 +36,13 @@ export function fetchBlog(slug: string, cms: string): Promise<Blog> | Blog {
 function fetchStoryblokBlog(slug: string) {
     return Storyblok.get(`cdn/stories/blogs/${slug}`, {
         version: 'draft',
-    }).then(({ data }) => data.story)
+        resolve_relations: 'author',
+    }).then(({ data }) => {
+        return {
+            ...data.story.content,
+            relationships: data.rels,
+        }
+    })
 }
 
 function fetchStoryblokProduct(slug: string) {

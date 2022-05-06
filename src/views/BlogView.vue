@@ -2,7 +2,7 @@
 <div v-if="blog">
     <div>
         <h3>{{ blog.heading }}</h3>
-        <strong>{{ blog.subHeading }}</strong>
+
         <p>{{ blog.description }}</p>
     </div>
     <div>
@@ -19,6 +19,15 @@
             >View Product</a>
         </div>
     </div>
+    <div>
+        <strong>Created by {{ blog.author.name }}</strong>
+        <img
+            v-if="blog.author.avatar"
+            :src="blog.author.avatar.filename"
+            :alt="blog.author.avatar.alt"
+            height="100"
+        >
+    </div>
 </div>
 </template>
 
@@ -31,10 +40,15 @@ import type { Blog } from '@/types'
 const route = useRoute()
 const routeParam: string = route.params.cms.toString()
 const slugParam: string = route.params.slug.toString()
-
 let blog = ref<Blog>({
     heading: "",
-    subHeading: "",
+    author: {
+        name: "",
+        avatar: {
+            filename: "",
+            alt: "",
+        },
+    },
     description: "",
     content: [],
 })

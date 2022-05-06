@@ -26,9 +26,20 @@ export interface ProductImage {
 
 export interface Blog {
     heading: string,
-    subHeading: string,
+    author: BlogAuthor,
     description: string,
     content: any,
+    relationships?: any,
+}
+
+export interface BlogAuthor {
+    name: string,
+    avatar: BlogAuthorAvatar,
+}
+
+export interface BlogAuthorAvatar {
+    filename: string,
+    alt: string,
 }
 
 export interface Store {
