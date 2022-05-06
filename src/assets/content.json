@@ -36,19 +36,28 @@
           "heading": "Newsboy Cap 1",
           "productLink": "product/newsboy-cap",
           "description": "A classic newsboy cap with a classic design.",
-          "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8u2guZwxCcT14YyeB4gL29fTwCzWjvWi0Em3Nsf7NnFANyqqnVBkweOsmYSnDjoW9IIyN1yWiR4RYSvKIfKehbzLc0u7d1SIF6ullzThDKBXNaTTyenNs&usqp=CAE"
+          "image": {
+            "filename": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8u2guZwxCcT14YyeB4gL29fTwCzWjvWi0Em3Nsf7NnFANyqqnVBkweOsmYSnDjoW9IIyN1yWiR4RYSvKIfKehbzLc0u7d1SIF6ullzThDKBXNaTTyenNs&usqp=CAE",
+            "alt": "Image 1"
+          }
         },
         {
           "heading": "Newsboy Cap 2",
           "productLink": "product/newsboy-cap",
           "description": "A classic newsboy cap with a classic design.",
-          "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8u2guZwxCcT14YyeB4gL29fTwCzWjvWi0Em3Nsf7NnFANyqqnVBkweOsmYSnDjoW9IIyN1yWiR4RYSvKIfKehbzLc0u7d1SIF6ullzThDKBXNaTTyenNs&usqp=CAE"
+          "image": {
+            "filename": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8u2guZwxCcT14YyeB4gL29fTwCzWjvWi0Em3Nsf7NnFANyqqnVBkweOsmYSnDjoW9IIyN1yWiR4RYSvKIfKehbzLc0u7d1SIF6ullzThDKBXNaTTyenNs&usqp=CAE",
+            "alt": "Image 2"
+          }
         },
         {
           "heading": "Newsboy Cap 3",
           "productLink": "product/newsboy-cap",
           "description": "A classic newsboy cap with a classic design.",
-          "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8u2guZwxCcT14YyeB4gL29fTwCzWjvWi0Em3Nsf7NnFANyqqnVBkweOsmYSnDjoW9IIyN1yWiR4RYSvKIfKehbzLc0u7d1SIF6ullzThDKBXNaTTyenNs&usqp=CAE"
+          "image": {
+            "filename": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8u2guZwxCcT14YyeB4gL29fTwCzWjvWi0Em3Nsf7NnFANyqqnVBkweOsmYSnDjoW9IIyN1yWiR4RYSvKIfKehbzLc0u7d1SIF6ullzThDKBXNaTTyenNs&usqp=CAE",
+            "alt": "Image 3"
+          }
         }
       ]
     }

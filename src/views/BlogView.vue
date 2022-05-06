@@ -13,6 +13,11 @@
         >
             <h5>{{ paragraph.heading }}</h5>
             <p>{{ paragraph.description }}</p>
+            <img
+                :alt="paragraph.image.alt"
+                :src="paragraph.image.filename"
+                height="100"
+            >
             <a
                 v-if="paragraph.productLink"
                 :href="`/${route.params.cms}/${route.params.store}/${paragraph.productLink}`"
