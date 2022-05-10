@@ -16,10 +16,9 @@ import Navigation from '@/components/Navigation.vue'
 @import '@/assets/base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
   font-weight: normal;
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 2rem;
 }
 </style>

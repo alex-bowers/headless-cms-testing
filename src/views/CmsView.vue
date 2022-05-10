@@ -1,18 +1,18 @@
 <template>
-  <div class="storyblok">
-    <h1>{{ title }} CMS</h1>
+    <div class="cms-view">
+        <h1>{{ title }} CMS</h1>
 
-    <div>
-      <router-link :to="`/${route.params.cms}/clothes`">
-        Clothes Store
-      </router-link>
-      <router-link :to="`/${route.params.cms}/hat`">
-        Hat Store
-      </router-link>
+        <div class="cms-view--links">
+            <router-link :to="`/${route.params.cms}/clothes`">
+            Clothes Store
+            </router-link>
+            <router-link :to="`/${route.params.cms}/hat`">
+            Hat Store
+            </router-link>
+        </div>
+
+        <RouterView />
     </div>
-
-    <RouterView />
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -26,7 +26,9 @@ const title = computed(() => createPageTitle(route.params.cms.toString()))
 </script>
 
 <style scoped>
-a {
-  padding: 0 1rem;
+@import '@/assets/base.css';
+
+.cms-view--links {
+    margin-bottom: 1rem;
 }
 </style>
