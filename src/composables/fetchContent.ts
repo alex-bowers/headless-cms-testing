@@ -1,7 +1,7 @@
 import StoryblokClient from 'storyblok-js-client';
 import { createBlog, createProduct } from '@/composables/sanitise'
 import cmsData from '@/assets/content.json'
-import type { Blog, Content, Product } from '@/types'
+import type { Blog, Content, PageRouteParams, Product } from '@/types'
 
 const dataFromCMS: Content = cmsData
 const storyblokToken = import.meta.env.VITE_STORYBLOK_TOKEN || ''
@@ -9,9 +9,9 @@ const Storyblok = new StoryblokClient({
     accessToken: storyblokToken.toString(),
 });
 
-export function fetchProduct(slug: string, cms: string): Promise<Product> | Product {
+export function fetchProduct({ cms, store, slug }: PageRouteParams): Promise<Product> | Product {
     const services: { [key: string]: Promise<Product>} = {
-        storyblok: fetchStoryblokProduct(slug)
+        storyblok: fetchStoryblokProduct(store, slug)
     }
 
     if (cms in services) {
@@ -21,9 +21,9 @@ export function fetchProduct(slug: string, cms: string): Promise<Product> | Prod
     return dataFromCMS.products[slug]
 }
 
-export function fetchBlog(slug: string, cms: string): Promise<Blog> | Blog {
+export function fetchBlog({ cms, store, slug }: PageRouteParams): Promise<Blog> | Blog {
     const services: { [key: string]: Promise<Blog>} = {
-        storyblok: fetchStoryblokBlog(slug)
+        storyblok: fetchStoryblokBlog(store, slug)
     }
 
     if (cms in services) {
@@ -33,8 +33,8 @@ export function fetchBlog(slug: string, cms: string): Promise<Blog> | Blog {
     return dataFromCMS.blogs[slug]
 }
 
-function fetchStoryblokBlog(slug: string) {
-    return Storyblok.get(`cdn/stories/blogs/${slug}`, {
+function fetchStoryblokBlog(store: string, slug: string) {
+    return Storyblok.get(`cdn/stories/storyblok/${store}/blog/${slug}`, {
         version: 'draft',
         resolve_relations: 'author',
     }).then(({ data }) => {
@@ -45,8 +45,8 @@ function fetchStoryblokBlog(slug: string) {
     })
 }
 
-function fetchStoryblokProduct(slug: string) {
-    return Storyblok.get(`cdn/stories/products/${slug}`, {
+function fetchStoryblokProduct(store: string, slug: string) {
+    return Storyblok.get(`cdn/stories/storyblok/${store}/product/${slug}`, {
         version: 'draft',
     }).then(({ data }) => data.story.content)
 }

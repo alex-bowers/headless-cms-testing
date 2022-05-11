@@ -53,8 +53,6 @@ import { convertMarkdownToHtml } from '@/composables/sanitise'
 import type { Blog } from '@/types'
 
 const route = useRoute()
-const routeParam: string = route.params.cms.toString()
-const slugParam: string = route.params.slug.toString()
 let blog = ref<Blog>({
     heading: "",
     author: {
@@ -69,13 +67,18 @@ let blog = ref<Blog>({
 })
 
 onMounted(() => {
-    const fetchedBlog = fetchBlog(slugParam, routeParam)
+    const routeParams = {
+        cms: route.params.cms.toString(),
+        store: route.params.store.toString(),
+        slug: route.params.slug.toString(),
+    }
+    const fetchedBlog = fetchBlog(routeParams)
 
     if (fetchedBlog instanceof Promise) {
         fetchedBlog.then((result: Blog) => {
             blog.value = result
         })
-        } else {
+    } else {
         blog.value = fetchedBlog
     }
 })

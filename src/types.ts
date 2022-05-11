@@ -63,3 +63,9 @@ export interface StorePageProduct {
 export interface StorePageBlog {
     slug: string,
 }
+
+export interface PageRouteParams {
+    cms: string,
+    store: string,
+    slug: string,
+}

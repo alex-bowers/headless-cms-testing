@@ -31,8 +31,6 @@ import { fetchProduct } from '@/composables/fetchContent'
 import type { Product } from '@/types'
 
 const route = useRoute()
-const routeParam: string = route.params.cms.toString()
-const slugParam: string = route.params.slug.toString()
 
 let product = ref<Product>({
     heading: '',
@@ -46,13 +44,18 @@ let product = ref<Product>({
 })
 
 onMounted(() => {
-    const fetchedProduct = fetchProduct(slugParam, routeParam)
+    const routeParams = {
+        cms: route.params.cms.toString(),
+        store: route.params.store.toString(),
+        slug: route.params.slug.toString(),
+    }
+    const fetchedProduct = fetchProduct(routeParams)
 
     if (fetchedProduct instanceof Promise) {
         fetchedProduct.then((result: Product) => {
             product.value = result
         })
-        } else {
+    } else {
         product.value = fetchedProduct
     }
 })
