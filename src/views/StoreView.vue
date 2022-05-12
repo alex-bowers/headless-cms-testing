@@ -10,7 +10,7 @@
                     >
                         <router-link
                             :to="`${route.path}/product/${item.slug}`"
-                        >{{ item.slug }}</router-link>
+                        >{{ createPageTitle(item.slug) }}</router-link>
                     </li>
                 </ul>
             </div>
@@ -23,7 +23,12 @@
                     >
                         <router-link
                             :to="`${route.path}/blog/${item.slug}`"
-                        >{{ item.slug }}</router-link>
+                        >{{ createPageTitle(item.slug) }}</router-link>
+                    </li>
+                    <li v-if="cmsParam === 'storyblok'">
+                        <router-link
+                            :to="`${route.path}/page/custom-layout`"
+                        >Custom Editable Blog</router-link>
                     </li>
                 </ul>
             </div>
@@ -34,10 +39,12 @@
 <script setup lang="ts">
 import { computed, watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { createPageTitle } from "@/composables/sanitise"
 import { useContentStore } from "@/stores/content"
 
 const route = useRoute()
 const store = useContentStore()
+const cmsParam = ref(route.params.cms.toString())
 const storeParam = ref(route.params.store.toString())
 
 const pages = computed(() => store.getPages(storeParam.value))
