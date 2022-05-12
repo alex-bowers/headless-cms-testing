@@ -28,6 +28,11 @@ const router = createRouter({
           path: ':store/blog/:slug',
           name: 'cms.store.blog',
           component: () => import('../views/BlogView.vue'),
+        },
+        {
+          path: ':store/page/:slug',
+          name: 'cms.store.storyblok.page',
+          component: () => import('../views/CmsSpecific/StoryblokCustomPageView.vue'),
         }
       ]
     }

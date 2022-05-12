@@ -33,6 +33,13 @@ export function fetchBlog({ cms, store, slug }: PageRouteParams): Promise<Blog> 
     return dataFromCMS.blogs[slug]
 }
 
+export function fetchStoryblokPage(store: string, slug: string) {
+    return Storyblok.get(`cdn/stories/storyblok/${store}/page/${slug}`, {
+        version: 'draft',
+        resolve_relations: 'BlogAuthor.author',
+    }).then(({ data }) => data)
+}
+
 function fetchStoryblokBlog(store: string, slug: string) {
     return Storyblok.get(`cdn/stories/storyblok/${store}/blog/${slug}`, {
         version: 'draft',
