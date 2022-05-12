@@ -1,13 +1,10 @@
-import StoryblokClient from 'storyblok-js-client';
+import { useStoryblokApi } from '@storyblok/vue';
 import { createBlog, createProduct } from '@/composables/sanitise'
 import cmsData from '@/assets/content.json'
 import type { Blog, Content, PageRouteParams, Product } from '@/types'
 
 const dataFromCMS: Content = cmsData
-const storyblokToken = import.meta.env.VITE_STORYBLOK_TOKEN || ''
-const Storyblok = new StoryblokClient({
-    accessToken: storyblokToken.toString(),
-});
+const storyblokApi = useStoryblokApi();
 
 export function fetchProduct({ cms, store, slug }: PageRouteParams): Promise<Product> | Product {
     const services: { [key: string]: Promise<Product>} = {
@@ -34,14 +31,14 @@ export function fetchBlog({ cms, store, slug }: PageRouteParams): Promise<Blog> 
 }
 
 export function fetchStoryblokPage(store: string, slug: string) {
-    return Storyblok.get(`cdn/stories/storyblok/${store}/page/${slug}`, {
+    return storyblokApi.get(`cdn/stories/storyblok/${store}/page/${slug}`, {
         version: 'draft',
         resolve_relations: 'BlogAuthor.author',
     }).then(({ data }) => data)
 }
 
 function fetchStoryblokBlog(store: string, slug: string) {
-    return Storyblok.get(`cdn/stories/storyblok/${store}/blog/${slug}`, {
+    return storyblokApi.get(`cdn/stories/storyblok/${store}/blog/${slug}`, {
         version: 'draft',
         resolve_relations: 'author',
     }).then(({ data }) => {
@@ -53,7 +50,7 @@ function fetchStoryblokBlog(store: string, slug: string) {
 }
 
 function fetchStoryblokProduct(store: string, slug: string) {
-    return Storyblok.get(`cdn/stories/storyblok/${store}/product/${slug}`, {
+    return storyblokApi.get(`cdn/stories/storyblok/${store}/product/${slug}`, {
         version: 'draft',
     }).then(({ data }) => data.story.content)
 }
