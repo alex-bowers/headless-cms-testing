@@ -18,6 +18,7 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchStoryblokPage } from '@/composables/fetchContent'
 import { useStoryblokBridge } from '@storyblok/vue';
+import type { StoryblokData, StoryBlockDataStory } from "@/types";
 
 import BlogAuthor from '@/components/Storyblok/BlogAuthor.vue';
 import BlogContent from '@/components/Storyblok/BlogContent.vue';
@@ -44,11 +45,11 @@ onMounted(() => {
     const slug = route.params.slug.toString()
     const fetchedPage = fetchStoryblokPage(store, slug)
 
-    fetchedPage.then((result) => {
+    fetchedPage.then((result: StoryblokData) => {
         page.value = result.story.content
         pageID.value = result.story.id
     }).then(() => {
-        useStoryblokBridge(pageID.value, (story) => (page.value = story.content), {
+        useStoryblokBridge(pageID.value, (story: StoryBlockDataStory) => (page.value = story.content), {
             resolveRelations: ['BlogAuthor.author'],
         });
     })

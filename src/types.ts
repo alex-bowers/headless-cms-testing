@@ -69,3 +69,39 @@ export interface PageRouteParams {
     store: string,
     slug: string,
 }
+
+export interface StoryblokResponse {
+    data: StoryblokData
+}
+
+export interface StoryblokData {
+    story: StoryBlockDataStory,
+    cv: number,
+    rels: any[],
+    links: any[]
+}
+
+export interface StoryBlockDataStory {
+    name: string,
+    created_at: string,
+    published_at: string | null,
+    id: number,
+    uuid: string,
+    content: any,
+    slug: string,
+    full_slug: string,
+    sort_by_date: null,
+    position: number,
+    tag_list: string[],
+    is_startpage: boolean,
+    parent_id: number,
+    meta_data: any,
+    group_id: string,
+    first_published_at: string | null,
+    release_id: number | null,
+    lang: string,
+    path: string | null,
+    alternates: any[],
+    default_full_slug: string,
+    translated_slugs: string
+}

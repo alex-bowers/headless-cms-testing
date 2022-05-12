@@ -1,7 +1,13 @@
 import { useStoryblokApi } from '@storyblok/vue';
 import { createBlog, createProduct } from '@/composables/sanitise'
 import cmsData from '@/assets/content.json'
-import type { Blog, Content, PageRouteParams, Product } from '@/types'
+import type {
+    Blog,
+    Content,
+    PageRouteParams,
+    Product,
+    StoryblokResponse
+} from '@/types'
 
 const dataFromCMS: Content = cmsData
 const storyblokApi = useStoryblokApi();
@@ -34,14 +40,14 @@ export function fetchStoryblokPage(store: string, slug: string) {
     return storyblokApi.get(`cdn/stories/storyblok/${store}/page/${slug}`, {
         version: 'draft',
         resolve_relations: 'BlogAuthor.author',
-    }).then(({ data }) => data)
+    }).then(({ data }: StoryblokResponse) => data)
 }
 
 function fetchStoryblokBlog(store: string, slug: string) {
     return storyblokApi.get(`cdn/stories/storyblok/${store}/blog/${slug}`, {
         version: 'draft',
         resolve_relations: 'author',
-    }).then(({ data }) => {
+    }).then(({ data }: StoryblokResponse) => {
         return {
             ...data.story.content,
             relationships: data.rels,
@@ -52,5 +58,5 @@ function fetchStoryblokBlog(store: string, slug: string) {
 function fetchStoryblokProduct(store: string, slug: string) {
     return storyblokApi.get(`cdn/stories/storyblok/${store}/product/${slug}`, {
         version: 'draft',
-    }).then(({ data }) => data.story.content)
+    }).then(({ data }: StoryblokResponse) => data.story.content)
 }
