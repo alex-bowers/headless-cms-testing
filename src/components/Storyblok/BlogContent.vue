@@ -1,6 +1,7 @@
 <template>
     <div
         v-if="blok"
+        v-editable="blok"
         class="blog-view--content"
     >
         <div

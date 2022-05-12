@@ -1,6 +1,7 @@
 <template>
     <div
         v-if="blok"
+        v-editable="blok"
         class="blog-view--author"
     >
         <span>Created by {{ blok.author.name }}</span>
@@ -26,6 +27,7 @@ defineProps({  blok: Object })
     border-radius: 1rem;
     color: var(--color-one);
     padding: 1rem;
+    margin: 1rem 0;
     width: 300px;
 }
 

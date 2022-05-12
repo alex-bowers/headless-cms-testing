@@ -17,10 +17,11 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchStoryblokPage } from '@/composables/fetchContent'
+import { useStoryblokBridge } from '@storyblok/vue';
 
-import BlogAuthor from '@/components/BlogAuthor.vue';
-import BlogContent from '@/components/BlogContent.vue';
-import BlogDescription from '@/components/BlogDescription.vue';
+import BlogAuthor from '@/components/Storyblok/BlogAuthor.vue';
+import BlogContent from '@/components/Storyblok/BlogContent.vue';
+import BlogDescription from '@/components/Storyblok/BlogDescription.vue';
 const registeredComponents: any = {
     BlogAuthor,
     BlogContent,
@@ -36,6 +37,7 @@ let page = ref({
         }
     ]
 })
+let pageID = ref(0)
 
 onMounted(() => {
     const store = route.params.store.toString()
@@ -44,6 +46,11 @@ onMounted(() => {
 
     fetchedPage.then((result) => {
         page.value = result.story.content
+        pageID.value = result.story.id
+    }).then(() => {
+        useStoryblokBridge(pageID.value, (story) => (page.value = story.content), {
+            resolveRelations: ['BlogAuthor.author'],
+        });
     })
 })
 </script>
