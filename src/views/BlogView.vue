@@ -85,8 +85,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-@import '@/assets/base.css';
-
 .blog-view--author {
     display: flex;
     align-items: flex-end;
