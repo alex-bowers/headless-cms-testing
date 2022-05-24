@@ -4,8 +4,6 @@
             <RouterLink to="/">Home</RouterLink>
             <RouterLink to="/storyblok">Storyblok</RouterLink>
             <RouterLink to="/prismic">Prismic</RouterLink>
-            <RouterLink to="/sanity">Sanity</RouterLink>
-            <RouterLink to="/strapi">Stripi</RouterLink>
         </nav>
     </div>
 </template>
