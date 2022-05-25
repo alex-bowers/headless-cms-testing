@@ -1,14 +1,54 @@
+// External Types.
+
+export interface Blog {
+    heading: string,
+    author: BlogAuthor,
+    description: string,
+    content: BlogContent[],
+    relationships?: any,
+}
+
+export interface BlogContent {
+    description: string,
+    heading:string,
+    image: {
+        alt?: string,
+        filename: string,
+    },
+    productLink: string,
+}
+
 export interface Content {
     products: ContentProduct,
     blogs: ContentBlog
 }
 
-export interface ContentProduct {
-    [key: string]: Product
+export interface PageRouteParams {
+    cms: string,
+    store: string,
+    slug: string,
 }
 
-export interface ContentBlog {
-    [key: string]: Blog
+export interface PrismicBlogContent {
+    description1: any[],
+    heading1: any[],
+    image: any,
+    productlink: any,
+}
+
+export interface PrismicBlogData {
+    author: any,
+    content: PrismicBlogContent,
+    description: any[],
+    heading: any[],
+}
+
+export interface PrismicProductData {
+    blogLink: any,
+    description: any[],
+    heading: any[],
+    image: any,
+    price: any[],
 }
 
 export interface Product {
@@ -19,59 +59,17 @@ export interface Product {
     blogLink?: string | null,
 }
 
-export interface ProductImage {
+interface ProductImage {
     filename: string,
     alt: string
 }
 
-export interface Blog {
-    heading: string,
-    author: BlogAuthor,
-    description: string,
-    content: any,
-    relationships?: any,
-}
-
-export interface BlogAuthor {
-    name: string,
-    avatar: BlogAuthorAvatar,
-}
-
-export interface BlogAuthorAvatar {
-    filename: string,
-    alt: string,
+export interface Services {
+    [key: string]: ServiceOptions
 }
 
 export interface Store {
     pages: StorePages
-}
-
-export interface StorePages {
-    [key: string]: StorePageContext
-}
-
-export interface StorePageContext {
-    name: string,
-    products: StorePageProduct[],
-    blogs: StorePageBlog[]
-}
-
-export interface StorePageProduct {
-    slug: string,
-}
-
-export interface StorePageBlog {
-    slug: string,
-}
-
-export interface PageRouteParams {
-    cms: string,
-    store: string,
-    slug: string,
-}
-
-export interface StoryblokResponse {
-    data: StoryblokData
 }
 
 export interface StoryblokData {
@@ -104,4 +102,51 @@ export interface StoryBlockDataStory {
     alternates: any[],
     default_full_slug: string,
     translated_slugs: string
+}
+
+export interface StoryblokResponse {
+    data: StoryblokData
+}
+
+// Internal Types.
+
+interface BlogAuthor {
+    name: string,
+    avatar: BlogAuthorAvatar,
+}
+
+interface BlogAuthorAvatar {
+    filename: string,
+    alt: string,
+}
+
+interface ContentBlog {
+    [key: string]: Blog
+}
+
+interface ContentProduct {
+    [key: string]: Product
+}
+
+interface ServiceOptions {
+    method: Function,
+    params: string[]
+}
+
+interface StorePages {
+    [key: string]: StorePageContext
+}
+
+interface StorePageBlog {
+    slug: string,
+}
+
+interface StorePageContext {
+    name: string,
+    products: StorePageProduct[],
+    blogs: StorePageBlog[]
+}
+
+interface StorePageProduct {
+    slug: string,
 }

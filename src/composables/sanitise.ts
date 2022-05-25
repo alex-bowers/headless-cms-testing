@@ -1,40 +1,80 @@
 import { marked } from 'marked'
-import type { Blog, Product } from '@/types'
+import type {
+    Blog,
+    BlogContent,
+    PrismicBlogContent,
+    Product,
+} from '@/types'
 
 export function convertMarkdownToHtml(markdown: string): string {
     return marked(markdown)
 }
 
 export function createBlog(data: any, cms: string): Blog {
-    const author: { [key: string]: any} = {
-        storyblok: data.relationships[0].content
+    if (cms === 'prismic') {
+        return {
+            heading: data.heading[0].text,
+            author: {
+                name: data.author.data.name[0].text,
+                avatar: {
+                    filename: data.author.data.avatar.url,
+                    alt: data.author.data.avatar.alt,
+                }
+            },
+            // Prismic forces it's RichText format. Markdown is not an option.
+            description: "",
+            content: formatPrismicBlogContent(data.content),
+        }
     }
 
     return {
         ...data,
-        author: author[cms] || {}
+        author: data.relationships[0].content || {}
     }
 }
 
-export function createPageTitle(routePath: string): string {
-    const words = routePath.split("-")
+export function createPageTitle(titleSlug: string): string {
+    const words = titleSlug.split("-")
     for (let i = 0; i < words.length; i++) {
-        words[i] = words[i][0].toUpperCase() + words[i].substr(1)
+        words[i] = words[i][0].toUpperCase() + words[i].substring(1)
     }
 
     return words.join(" ")
 }
 
 export function createProduct(data: any, cms: string): Product {
-    const image: { [key: string]: any} = {
-        storyblok: data.images[0]
+    if (cms === 'prismic') {
+        return {
+            heading: data.heading[0].text,
+            description: data.description[0].text,
+            price: data.price[0].text,
+            image: {
+                alt: data.image.alt,
+                filename: data.image.url,
+            },
+            blogLink: `blog/${data.bloglink.uid}`,
+        }
     }
 
     return {
         heading: data.heading,
         description: data.description,
         price: data.price,
-        image: image[cms] || {},
+        image: data.images[0] || {},
         blogLink: data.blogLink,
     }
+}
+
+function formatPrismicBlogContent(content: PrismicBlogContent[]): BlogContent[] {
+    return content.map(row => {
+        return {
+            heading: row.heading1[0].text,
+            description: row.description1[0].text,
+            productLink: `product/${row.productlink.uid}`,
+            image: {
+                alt: row.image.alt,
+                filename: row.image.url,
+            }
+        }
+    })
 }
