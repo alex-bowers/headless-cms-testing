@@ -18,24 +18,4 @@
 defineProps({  blok: Object })
 </script>
 
-<style scoped>
-.blog-view--author {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    background-color: var(--color-text);
-    border-radius: 1rem;
-    color: var(--color-one);
-    padding: 1rem;
-    margin: 1rem 0;
-    width: 300px;
-}
-
-.blog-view--author span {
-    width: 110px;
-}
-
-.blog-view--author img {
-    border-radius: 200px;
-}
-</style>
+<style scoped></style>

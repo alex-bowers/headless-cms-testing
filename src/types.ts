@@ -29,6 +29,19 @@ export interface PageRouteParams {
     slug: string,
 }
 
+export interface PrismicAuthor {
+    avatar: {
+        alt: string,
+        url: string,
+        copyright?: string,
+        dimensions: {
+            height: number,
+            width: number,
+        }
+    },
+    name: any[],
+}
+
 export interface PrismicBlogContent {
     description1: any[],
     heading1: any[],

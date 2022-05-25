@@ -25,7 +25,7 @@
                             :to="`${route.path}/blog/${item.slug}`"
                         >{{ createPageTitle(item.slug) }}</router-link>
                     </li>
-                    <li v-if="cmsParam === 'storyblok'">
+                    <li v-if="cmsParam === 'prismic' || cmsParam === 'storyblok'">
                         <router-link
                             :to="`${route.path}/page/custom-layout`"
                         >Custom Editable Blog</router-link>

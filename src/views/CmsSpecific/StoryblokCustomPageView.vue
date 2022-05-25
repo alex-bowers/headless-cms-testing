@@ -1,5 +1,6 @@
 <template>
     <div v-if="page.blocks">
+        <h2>{{ page.name }}</h2>
         <div
             v-for="block in page.blocks"
             :key="block._uid"
@@ -36,7 +37,8 @@ let page = ref({
             _uid: "",
             component: "",
         }
-    ]
+    ],
+    name: ""
 })
 let pageID = ref(0)
 

@@ -1,3 +1,4 @@
+import { usePrismicDocumentByUID } from '@prismicio/vue'
 import { useStoryblokApi } from '@storyblok/vue'
 import axios from "axios"
 
@@ -105,6 +106,12 @@ function fetchStoryblokProduct(store: string, slug: string): Promise<Product> {
             version: 'draft',
         }
     }).then(({ data }: StoryblokResponse) => data.story.content)
+}
+
+export function fetchPrismicPage(slug: string) {
+    return usePrismicDocumentByUID('custom_blog', slug, {
+        fetchLinks: 'author.name,author.avatar'
+    })
 }
 
 // Storyblok live page editor.

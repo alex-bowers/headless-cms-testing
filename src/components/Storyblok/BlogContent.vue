@@ -35,27 +35,4 @@ const route = useRoute()
 defineProps({  blok: Object })
 </script>
 
-<style scoped>
-.blog-view--content {
-    background-color: var(--color-two);
-    margin: 1rem 0;
-    border-radius: 1rem;
-}
-
-.blog-view--content--item {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 1.75rem;
-}
-
-.blog-view--content--item:nth-child(2) {
-    background-color: var(--color-three);
-}
-
-.blog-view--content--item .item--text {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 500px;
-}
-</style>
+<style scoped></style>

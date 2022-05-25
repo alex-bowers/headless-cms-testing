@@ -44,3 +44,47 @@ a.router-link-active {
   font-weight: 600;
   text-decoration: none;
 }
+
+/* Shared Components */
+.blog-view--author {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  background-color: var(--color-text);
+  border-radius: 1rem;
+  color: var(--color-one);
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 300px;
+}
+
+.blog-view--author span {
+  width: 110px;
+}
+
+.blog-view--author img {
+  border-radius: 200px;
+}
+
+.blog-view--content {
+  background-color: var(--color-two);
+  margin: 1rem 0;
+  border-radius: 1rem;
+}
+
+.blog-view--content--item {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1.75rem;
+}
+
+.blog-view--content--item:nth-child(2) {
+  background-color: var(--color-three);
+}
+
+.blog-view--content--item .item--text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500px;
+}

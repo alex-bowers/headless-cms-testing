@@ -10,6 +10,16 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/prismic/:store/page/:slug',
+      name: 'cms.store.prismic.page',
+      component: () => import('../views/CmsSpecific/PrismicCustomPageView.vue'),
+    },
+    {
+      path: '/storyblok/:store/page/:slug',
+      name: 'cms.store.storyblok.page',
+      component: () => import('../views/CmsSpecific/StoryblokCustomPageView.vue'),
+    },
+    {
       path: '/:cms',
       name: 'cms',
       component: () => import('../views/CmsView.vue'),
@@ -29,11 +39,6 @@ const router = createRouter({
           name: 'cms.store.blog',
           component: () => import('../views/BlogView.vue'),
         },
-        {
-          path: ':store/page/:slug',
-          name: 'cms.store.storyblok.page',
-          component: () => import('../views/CmsSpecific/StoryblokCustomPageView.vue'),
-        }
       ]
     }
   ]
